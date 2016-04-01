@@ -1,7 +1,6 @@
-
-from unittest import TestCase
+from unittest import  TestCase
 from selenium import webdriver
-
+from selenium.webdriver.common.by import By
 
 class FunctionalTest(TestCase):
 
@@ -19,6 +18,8 @@ class FunctionalTest(TestCase):
         self.browser.get('http://localhost:8000')
         link = self.browser.find_element_by_id('id_register')
         link.click()
+
+        self.browser.implicitly_wait(3)
 
         nombre = self.browser.find_element_by_id('nombre')
         nombre.send_keys('Jorge')
@@ -41,11 +42,11 @@ class FunctionalTest(TestCase):
         contrasenia.send_keys('calve123')
 
         foto = self.browser.find_element_by_id('foto')
-        foto.send_keys('http://i.imgur.com/lfxfr5W.jpg')
+        foto.send_keys('C:\Users\jd.runza\Desktop\lfxfr5W.jpg')
 
         botonGuardar = self.browser.find_element_by_id('id_grabar')
         botonGuardar.click()
-        self.browser.implicitly_wait(3)
+        self.browser.implicitly_wait(6)
         p = self.browser.find_element(By.XPATH, "//p[text()='Jorge Runza']")
 
         self.assertIn('Jorge Runza', p.text)
