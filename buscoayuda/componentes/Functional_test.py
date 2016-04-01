@@ -58,6 +58,8 @@ class FunctionalTest(TestCase):
         p.click()
 
         self.browser.implicitly_wait(5)
-        p = self.browser.find_element(By.XPATH, "//p[text()='Jorge Runza']")
+        nombre = self.browser.find_element_by_id('nombre')
+        apellido = self.browser.find_element_by_id('apellidos')
 
-        self.assertIn('Jorge Runza', p.text)
+        self.assertIn('Jorge', nombre.text)
+        self.assertIn('Runza', apellido.text)
