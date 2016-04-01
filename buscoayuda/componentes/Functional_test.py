@@ -46,20 +46,20 @@ class FunctionalTest(TestCase):
 
         botonGuardar = self.browser.find_element_by_id('id_grabar')
         botonGuardar.click()
-        self.browser.implicitly_wait(6)
+        self.browser.implicitly_wait(3)
         p = self.browser.find_element(By.XPATH, "//p[text()='Jorge Runza']")
 
         self.assertIn('Jorge Runza', p.text)
 
     def test_view_detail(self):
         self.browser.get('http://localhost:8000')
-        self.browser.implicitly_wait(5)
+        self.browser.implicitly_wait(20)
         p = self.browser.find_element(By.XPATH, "//p[text()='Jorge Runza']")
         p.click()
 
         self.browser.implicitly_wait(5)
         nombre = self.browser.find_element_by_id('nombre')
-        apellido = self.browser.find_element_by_id('apellidos')
+        apellido = self.browser.find_element_by_id('apellido')
 
         self.assertIn('Jorge', nombre.text)
         self.assertIn('Runza', apellido.text)
